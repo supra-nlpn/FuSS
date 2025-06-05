@@ -87,6 +87,24 @@ After running the fuzzer, you will have:
 ```
 
 ---
+## 📚 Citation
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15604900.svg)](https://doi.org/10.5281/zenodo.15604900)
+
+If you use this tool in academic work, please cite:
+
+```bibtex
+@software{FuSS_2025,
+  author       = {Anonymous Authors},
+  title        = {{FuSS: Coverage-Directed Hardware Fuzzing with Selective Symbolic Execution}},
+  year         = 2025,
+  publisher    = {Zenodo},
+  version      = {v2.0},
+  doi          = {10.5281/zenodo.15604900},
+  url          = {https://doi.org/10.5281/zenodo.15604900}
+}
+```
+
+---
 
 ## 📜 License
 

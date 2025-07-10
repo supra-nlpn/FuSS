@@ -1,7 +1,259 @@
-*.elf
-*.vcd
-*.hex
-*.log
-*.pyc
+# FuSS - Fuzzing with Selective Symbolic Execution .gitignore
+
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
 build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+.ENV
+.env
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# Poetry
+poetry.lock
+
+# pdm
+.pdm.toml
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Spyder project settings
+.spyderproject
+.spyproject
+
+# Rope project settings
+.ropeproject
+
+# mkdocs documentation
+/site
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# pytype static type analyzer
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+
+# Local History for Visual Studio Code
+.history/
+
+# Built Visual Studio Code Extensions
+*.vsix
+
+# FuSS Specific Files
+# ====================
+
+# Demo and temporary files
+**/symbolic_fuzzing_demo/
+**/demo_workspace/
+**/test_workspace/
+demo_config.yaml
+test_config.yaml
+
+# Symbolic execution outputs
+**/symbolic_output/
+**/angr_output/
+**/symexec_*/
+*.angr
+
+# Fuzzing artifacts
+**/corpus/
+**/crashes/
+**/hangs/
+**/queue/
+**/coverage/
+**/plots/
+**/stats/
+avg_reached_mux.txt
+coverage_*.txt
+fuzzer_*.log
+
+# RTL simulation outputs
+*.vcd
+*.fsdb
+*.shm/
+*.log
+**/simv*
+**/csrc/
+**/ucli.key
+*.vpd
+*.wlf
+work/
+modelsim.ini
+transcript
+
+# Compilation outputs
+*.o
+*.a
+*.so
+*.elf
+*.bin
+*.hex
+*.dump
+*.objdump
+*.readelf
+
+# RISC-V toolchain outputs
+*.riscv
+*.rv32*
+*.rv64*
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Configuration backups
+*.orig
+*.backup
+
+# Documentation build
+docs/_build/
+docs/build/
+
+# Benchmark outputs
+benchmark_results/
+performance_logs/
+
+# angr specific
+.angr_cache/
+angr_*.db
+
+# Z3 solver files
+*.smt2
+z3_*.log
+
+# Firrtl outputs
+*.fir.out
+*.anno.json
+
+# System files
+.nfs*
+core
+core.*
+
+# IDE and editor files
+*.sublime-project
+*.sublime-workspace
+.vimrc.local
+.nvimrc.local
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Docker
+Dockerfile.local
+docker-compose.override.yml
+.dockerignore
+
+# Local configuration
+local_config.py
+local_settings.py
+.local/
+
+# Backup files
+*.backup
+*.old
+
+# Project specific temporary directories
+tmp/
+temp/
+scratch/

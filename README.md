@@ -69,13 +69,6 @@ cd FuSS
 ### 3. Try the Demo
 
 ```bash
-# Run a demonstration of all features
-./fuss demo
-```
-
-### 4. Run the Demo (Optional)
-
-```bash
 # Experience FuSS with a realistic RTL demo
 ./fuss demo
 ```
@@ -85,7 +78,9 @@ This creates a complete demo environment with:
 - RISC-V test cases targeting specific coverage scenarios  
 - Coverage plateau simulation and symbolic execution breakthrough
 
-### 5. Start Fuzzing
+**Note**: The demo creates the RTL design and shows framework capabilities. To run the actual RTL simulation, see the Interactive Demo section below.
+
+### 4. Start Fuzzing
 
 ```bash
 # Run integrated fuzzing with automatic symbolic execution
@@ -221,14 +216,15 @@ The mock DifuzzRTL demonstrates a realistic fuzzing scenario:
 
 ### Running the Demo
 
-**Basic Demo**
+**Basic Demo (Framework Showcase)**
 ```bash
 ./fuss demo
 ```
+This creates the demo environment, RTL design files, and demonstrates the framework's capabilities without running RTL simulation.
 
-**Interactive Demo**
+**Interactive Demo (RTL Simulation)**
 ```bash
-# Run the demo
+# Run the demo first to create the environment
 ./fuss demo
 
 # Explore the created environment
@@ -240,10 +236,10 @@ cat mock_difuzz_rtl/RTL/toyProcessor.v
 # Check test cases
 ls demo_workspace/corpus/
 
-# Run mock fuzzing simulation (Method 1: from FuSS root directory)
+# Run mock fuzzing simulation with coverage plateau demonstration
 python3 -u symbolic_fuzzing/symbolic_fuzzing_demo/mock_difuzz_rtl/Fuzzer/DifuzzRTL.py
 
-# Run mock fuzzing simulation (Method 2: navigate to fuzzer directory)
+# Alternative: navigate to the fuzzer directory first
 cd symbolic_fuzzing/symbolic_fuzzing_demo/mock_difuzz_rtl/Fuzzer
 python3 -u DifuzzRTL.py
 
@@ -543,40 +539,6 @@ python3 scripts/symbolic_fuzzing_main.py analyze \
   --workspace ./workspace_rocket
 ```
 
-## Troubleshooting
-
-### Common Issues
-
-1. **angr Installation Problems**
-   ```bash
-   # Try installing in a virtual environment
-   python3 -m venv venv
-   source venv/bin/activate
-   pip install angr
-   ```
-
-2. **RISC-V Toolchain Not Found**
-   ```bash
-   # Check if tools are in PATH
-   which riscv64-unknown-elf-gcc
-   
-   # Or specify full paths in configuration
-   RISCV_GCC = "/opt/riscv/bin/riscv64-unknown-elf-gcc"
-   ```
-
-3. **Permission Errors**
-   ```bash
-   # Make sure scripts are executable
-   chmod +x scripts/*.py
-   
-   # Check workspace permissions
-   mkdir -p workspace && chmod 755 workspace
-   ```
-
-4. **No Coverage Information**
-   - Ensure DifuzzRTL is running and generating coverage files
-   - Check that workspace directory is correctly specified
-   - Verify fuzzer is writing to expected locations
 
 ### Debug Mode
 
@@ -595,56 +557,7 @@ This provides detailed logs about:
 - Symbolic execution progress
 - Test generation and integration
 
-## Performance Tips
 
-1. **Adjust Symbolic Execution Timeouts**
-   - Increase `ANGR_TIMEOUT` for complex designs
-   - Decrease for faster iteration during development
-
-2. **Limit Symbolic State Explosion**
-   - Reduce `MAX_SYMBOLIC_STATES` if execution is too slow
-   - Use `MAX_EXPLORATION_DEPTH` to bound search depth
-
-3. **Optimize Corpus Size**
-   - Set `MAX_CORPUS_FILES` based on available compute resources
-   - Larger corpus = more diverse symbolic execution but slower
-
-4. **Plateau Detection Tuning**
-   - Increase `PLATEAU_WINDOW` for more stable plateau detection
-   - Adjust `PLATEAU_THRESHOLD` based on expected coverage growth
-
-## Integration with Existing Workflows
-
-The symbolic fuzzing system is designed to work alongside existing DifuzzRTL workflows:
-
-- **Non-invasive**: Does not modify DifuzzRTL code or configuration
-- **Corpus Compatible**: Generates standard RISC-V assembly files
-- **Log Friendly**: Integrates with existing logging and monitoring
-- **Resource Aware**: Can be configured to use available compute resources efficiently
-
-## Contributing
-
-To contribute to this project:
-
-1. Fork the repository
-2. Create a feature branch
-3. Add tests for new functionality
-4. Ensure all tests pass
-5. Submit a pull request
-
-### Development Setup
-
-```bash
-# Install development dependencies
-pip3 install -r requirements.txt
-pip3 install pytest pytest-cov
-
-# Run tests
-python3 -m pytest tests/
-
-# Run with coverage
-python3 -m pytest --cov=src tests/
-```
 
 ## License
 

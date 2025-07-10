@@ -1,0 +1,29 @@
+plateau:
+  min_iterations: 50
+  threshold_ratio: 0.05
+  window_size: 100
+riscv:
+  base_addr: 2147483648
+  instruction_size: 4
+  register_size: 64
+symbolic_execution:
+  max_solutions: 5
+  max_steps: 1000
+  max_targets: 10
+  min_gap_size: 5
+  periodic_interval: 1000
+  timeout: 300
+targets:
+  branch_instructions:
+  - beq
+  - bne
+  - blt
+  - bge
+  - bltu
+  - bgeu
+  - jal
+  - jalr
+  - beqz
+  - bnez
+  - bgtz
+  - bltz

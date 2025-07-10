@@ -1,0 +1,34 @@
+#!/bin/bash
+# FuSS Framework Wrapper Script
+# This script ensures the virtual environment is always used for FuSS commands
+
+# Get the directory of this script
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
+FUSS_ROOT="$SCRIPT_DIR"
+VENV_DIR="$FUSS_ROOT/symbolic_fuzzing/venv"
+VENV_ACTIVATE="$VENV_DIR/bin/activate"
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
+NC='\033[0m' # No Color
+
+# Check if first argument is setup, in which case we run directly
+if [ "$1" = "setup" ]; then
+    exec python3 "$FUSS_ROOT/fuss.py" "$@"
+fi
+
+# For all other commands, ensure virtual environment exists and is activated
+if [ ! -f "$VENV_ACTIVATE" ]; then
+    echo -e "${RED}❌ Virtual environment not found.${NC}"
+    echo "Please run setup first:"
+    echo "  $0 setup"
+    exit 1
+fi
+
+# Activate virtual environment and run FuSS
+cd "$FUSS_ROOT"
+source "$VENV_ACTIVATE"
+exec python "$FUSS_ROOT/fuss.py" "$@"

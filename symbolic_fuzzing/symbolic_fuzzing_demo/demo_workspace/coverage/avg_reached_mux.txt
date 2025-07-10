@@ -1,0 +1,10 @@
+# Coverage tracking for toyProcessor
+# BB coverage percentages
+45
+47
+52
+58
+65
+65
+66
+65

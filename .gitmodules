@@ -1,0 +1,3 @@
+[submodule "difuzz-rtl"]
+	path = difuzz-rtl
+	url = https://github.com/compsec-snu/difuzz-rtl
